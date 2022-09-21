@@ -57,51 +57,22 @@ public class SkillProficiencies
         if (p < 0 || p > 2) { throw new Exception("Invalid proficiency level"); }
 
         sp.put(skillName, p);
-
-        switch (skillName)
-        {
-            case "Acrobatics":
-                sp.put("Acrobatics", p);
-            case "Animal Handling":
-                sp.put("Animal Handling", p);
-            case "Arcana":
-                sp.put("Arcana", p);
-            case "Athletics":
-                sp.put("Athletics", p);
-            case "Deception":
-                sp.put("Deception", p);
-            case "History":
-                sp.put("History", p);
-            case "Insight":
-                sp.put("Insight", p);
-            case "Intimidation":
-                sp.put("Intimidation", p);
-            case "Investigation":
-                sp.put("Investigation", p);
-            case "Medicine":
-                sp.put("Medicine", p);
-            case "Nature":
-                sp.put("Nature", p);
-            case "Perception":
-                sp.put("Perception", p);
-            case "Performance":
-                sp.put("Performance", p);
-            case "Persuasion":
-                sp.put("Performance", p);
-            case "Religion":
-                sp.put("Religion", p);
-            case "Sleight of Hand":
-                sp.put("Sleight of Hand", p);
-            case "Stealth":
-                sp.put("Stealth", p);
-            case "Survival":
-                sp.put("Survival", p);
-        }
     }
 
     public void setSkillBonuses()
     {
         int pb = character.proficiencyBonus;
+        HashMap<String, Integer> mods = character.abilities.getModifiers();
+        int _str = mods.get("STR");
+        int _dex = mods.get("DEX");
+        int _int = mods.get("INT");
+        int _wis = mods.get("WIS");
+        int _cha = mods.get("CHA");
 
+        // Strength
+        skillBonuses.put("Athletics", _str + (pb * sp.get("Athletics")) );
+
+        // Dexterity
+        skillBonuses.put("Acrobatics", _dex + (pb));
     }
 }

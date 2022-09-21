@@ -53,27 +53,8 @@ public class AbilityScores
      */
     public void setScore(String ability, int s)
     {
-        switch (ability)
-        {
-            case "STR":
-                scores.put("STR", s);
-                modifiers.put("STR", toModifier(s));
-            case "DEX":
-                scores.put("DEX", s);
-                modifiers.put("DEX", toModifier(s));
-            case "CON":
-                scores.put("CON", s);
-                modifiers.put("CON", toModifier(s));
-            case "INT":
-                scores.put("INT", s);
-                modifiers.put("INT", toModifier(s));
-            case "WIS":
-                scores.put("WIS", s);
-                modifiers.put("WIS", toModifier(s));
-            case "CHA":
-                scores.put("CHA", s);
-                modifiers.put("CHA", toModifier(s));
-        }
+        scores.put(ability, s);
+        modifiers.put(ability, toModifier(s));
     }
 
     /**
