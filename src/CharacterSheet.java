@@ -40,6 +40,12 @@ public class CharacterSheet
         else { proficiencyBonus = (level / 4) + 1; }
     }
 
+    public void setAbilities(AbilityScores a) { abilities = a; }
+    public AbilityScores getAbilities() { return abilities; }
+
+    public void setSkills(SkillProficiencies s) { skills = s; }
+    public SkillProficiencies getSkills() { return skills; }
+
     @Override
     public String toString()
     {
