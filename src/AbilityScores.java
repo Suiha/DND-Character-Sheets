@@ -3,8 +3,8 @@ import java.util.*;
 public class AbilityScores
 {
     CharacterSheet character;
-    private HashMap<String, Integer> scores;
-    private HashMap<String, Integer> modifiers;
+    private LinkedHashMap<String, Integer> scores;
+    private LinkedHashMap<String, Integer> modifiers;
 
     /**
      * Upon creating a character, input their ability scores.
@@ -21,8 +21,8 @@ public class AbilityScores
     public AbilityScores(CharacterSheet c, int _str, int _dex, int _con, int _int, int _wis, int _cha)
     {
         character = c;
-        scores = new HashMap<>();
-        modifiers = new HashMap<>();
+        scores = new LinkedHashMap<>();
+        modifiers = new LinkedHashMap<>();
 
         this.setScores(_str, _dex, _con, _int, _wis, _cha);
     }
@@ -75,8 +75,8 @@ public class AbilityScores
      * Getters for scores & modifiers
      * @return: map of scores or modifiers
      */
-    public HashMap<String, Integer> getScores() { return scores; }
-    public HashMap<String, Integer> getModifiers() { return modifiers; }
+    public LinkedHashMap<String, Integer> getScores() { return scores; }
+    public LinkedHashMap<String, Integer> getModifiers() { return modifiers; }
 
 
     /**

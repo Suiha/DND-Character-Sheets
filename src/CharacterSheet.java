@@ -8,8 +8,7 @@ public class CharacterSheet
     String name;
     Race race;
     String size;
-
-    int speed;
+    LinkedHashMap<String, Integer> speed = new LinkedHashMap<>();
 
     int level;
     int proficiencyBonus;
@@ -50,16 +49,44 @@ public class CharacterSheet
     {
         race = r;
 
-        // The character's ability scores are updated based on their
-        // race's ASI
+        // The character's ability scores are updated based on their race's ASI
         HashMap<String, Integer> current = abilities.getScores();
         HashMap<String, Integer> asi = race.getAbilityScoreIncrease();
         for (String s : race.getAbilityScoreIncrease().keySet())
         {
             abilities.setScore(s, current.get(s) + asi.get(s));
         }
+
+        // Size from race
+        size = race.getSize();
+
+        // Initial speed from race
+        speed = race.getSpeed();
+
+        // Languages from race
+        languages.addAll(race.getLanguages());
     }
     public Race getRace() { return race; }
+
+    public void printSpeed()
+    {
+        String s = name + "'s Speeds:\n";
+        for (String a : speed.keySet())
+        {
+            s += "\t" + a + ": " + speed.get(a) + "\n";
+        }
+        System.out.println(s);
+    }
+
+    public void printLanguages()
+    {
+        String s = "Languages: ";
+        for (String a : languages)
+        {
+            s += a + ", ";
+        }
+        System.out.println(s.substring(0, s.length() - 2));
+    }
 
     public void setAbilities(AbilityScores a) { abilities = a; }
     public AbilityScores getAbilities() { return abilities; }

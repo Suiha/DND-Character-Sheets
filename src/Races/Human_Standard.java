@@ -4,7 +4,8 @@ public class Human_Standard extends Race
 {
     /**
      * Standard humans lack unique racial features in exchange
-     * for getting +1 to every ability score
+     * for getting +1 to every ability score.
+     * In addition to Common, they learn an extra language of their choice.
      */
     public Human_Standard()
     {
@@ -20,7 +21,10 @@ public class Human_Standard extends Race
         abilityScoreIncrease.put("CHA", 1);
 
         size = "Medium";
-        speed = 30;
+        speed.put("Walking Speed", 30);
+
+        // Add user choice later; temporary language choice here
+        languages.add("Elvish");
     }
 
     /**
