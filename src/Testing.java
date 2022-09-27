@@ -1,3 +1,5 @@
+import Races.Human_Standard;
+
 import java.util.*;
 
 public class Testing
@@ -13,6 +15,8 @@ public class Testing
         // Ability Scores
         AbilityScores as = new AbilityScores(adrian, 8, 14, 14, 12, 18, 11);
         adrian.setAbilities(as);
+        // and Race
+        adrian.setRace(new Human_Standard());
         System.out.println(as);
 
         // SKill Proficiencies

@@ -1,14 +1,20 @@
-import java.util.ArrayList;
+import Races.*;
+import java.util.*;
 
 public class CharacterSheet
 {
     DiceRoller roll = new DiceRoller();
+
     String name;
-    // Race race;
-    AbilityScores abilities;
+    Race race;
+    String size;
+
+    int speed;
+
     int level;
     int proficiencyBonus;
-    int speed;
+    // HashMap<Class, Integer> classes;
+    AbilityScores abilities;
     SkillProficiencies skills;
 
     // Proficiencies
@@ -39,6 +45,21 @@ public class CharacterSheet
         if (level % 4 != 0) proficiencyBonus = (level / 4) + 2;
         else { proficiencyBonus = (level / 4) + 1; }
     }
+
+    public void setRace(Race r)
+    {
+        race = r;
+
+        // The character's ability scores are updated based on their
+        // race's ASI
+        HashMap<String, Integer> current = abilities.getScores();
+        HashMap<String, Integer> asi = race.getAbilityScoreIncrease();
+        for (String s : race.getAbilityScoreIncrease().keySet())
+        {
+            abilities.setScore(s, current.get(s) + asi.get(s));
+        }
+    }
+    public Race getRace() { return race; }
 
     public void setAbilities(AbilityScores a) { abilities = a; }
     public AbilityScores getAbilities() { return abilities; }
